@@ -2,22 +2,34 @@ const express = require('express');
 const app = express();
 const bodyparser = require('body-parser')
 const ejs = require('ejs')
+const authRouter = require("./routers/authRouter")
+const mongoose = require('mongoose');
 
 const PORT = 3000
+const url = "mongodb+srv://maulerr:Aitu2021!@backend.koyk6.mongodb.net/backend?retryWrites=true&w=majority";
+
 
 app.set("view engine", "ejs")
-
 app.use('/static', express.static('static'))
 app.use(bodyparser.urlencoded({extended: true}))
+app.use(express.json())
 
-app.use("/", require("./routers/index"))
-app.use("/", require("./routers/about"))
-app.use("/", require("./routers/workpage"))
-app.use("/", require("./routers/login"))
-app.use("/", require("./routers/reg"))
-app.use("/", require("./routers/workouts"))
+try {
+    mongoose.connect(url);
 
-app.listen(PORT, () => {
-    console.log(`App was launched on http://localhost:${PORT}`)
-})
+    app.use('/auth', authRouter);
+    app.use("/", require("./routers/index"))
+    app.use("/", require("./routers/about"))
+    app.use("/", require("./routers/workpage"))
+    app.use("/", require("./routers/login"))
+    app.use("/", require("./routers/reg"))
+    // app.use("/", require("./routers/workouts"))
+
+    app.listen(PORT, () => {
+        console.log(`App was launched on http://localhost:${PORT}`)
+    })
+} catch (e) {
+    console.log("Something went wrong!" +
+        "" + e)
+}
 
