@@ -12,6 +12,8 @@ const url = "mongodb+srv://maulerr:Aitu2021!@backend.koyk6.mongodb.net/backend?r
 app.set("view engine", "ejs")
 app.use('/static', express.static('static'))
 app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.json())
+
 app.use(express.json())
 
 try {
@@ -23,6 +25,7 @@ try {
     app.use("/", require("./routers/workpage"))
     app.use("/", require("./routers/login"))
     app.use("/", require("./routers/reg"))
+    app.use("/", require("./routers/adminRouter"))
     // app.use("/", require("./routers/workouts"))
 
     app.listen(PORT, () => {
