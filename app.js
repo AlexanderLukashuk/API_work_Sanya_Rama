@@ -2,12 +2,9 @@ const express = require('express');
 const app = express();
 const bodyparser = require('body-parser')
 const ejs = require('ejs')
-const authRouter = require("./routers/authRouter")
+// const authRouter = require("./routers/authRouter")
 const mongoose = require('mongoose');
-
-const PORT = 3000
-const url = "mongodb+srv://maulerr:Aitu2021!@backend.koyk6.mongodb.net/backend?retryWrites=true&w=majority";
-
+const {uri, PORT} = require('./Xconfig')
 
 app.set("view engine", "ejs")
 app.use('/static', express.static('static'))
@@ -17,9 +14,9 @@ app.use(bodyparser.json())
 app.use(express.json())
 
 try {
-    mongoose.connect(url);
+    mongoose.connect(uri);
 
-    app.use('/auth', authRouter);
+    // app.use('/auth', authRouter);
     app.use("/", require("./routers/index"))
     app.use("/", require("./routers/about"))
     app.use("/", require("./routers/workpage"))
