@@ -5,6 +5,7 @@ const ejs = require('ejs')
 // const authRouter = require("./routers/authRouter")
 const mongoose = require('mongoose');
 const {uri, PORT} = require('./Xconfig')
+const port = process.env.PORT || PORT;
 
 app.set("view engine", "ejs")
 app.use('/static', express.static('static'))
@@ -12,6 +13,8 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 
 app.use(express.json())
+
+
 
 try {
     mongoose.connect(uri);
