@@ -24,7 +24,7 @@ if (port == null || port == "") {
 try {
     mongoose.connect(url);
 
-    app.use('/auth', authRouter);
+    // app.use('/auth', authRouter);
     app.use("/", require("./routers/index"))
     app.use("/", require("./routers/about"))
     app.use("/", require("./routers/workpage"))
