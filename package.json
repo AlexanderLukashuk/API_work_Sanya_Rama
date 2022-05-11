@@ -31,7 +31,7 @@
   "license": "ISC",
   "engines": {
     "node": "16.14.2",
-    "npm" : "8.5.0"
+    "npm": "8.5.0"
   },
   "bugs": {
     "url": "https://github.com/AlexanderLukashuk/API_work_Sanya_Rama/issues"
