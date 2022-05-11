@@ -5,7 +5,7 @@ const ejs = require('ejs')
 const authRouter = require("./routers/authRouter")
 const mongoose = require('mongoose');
 
-const PORT = 3000
+// const PORT = 3000
 const url = "mongodb+srv://maulerr:Aitu2021!@backend.koyk6.mongodb.net/backend?retryWrites=true&w=majority";
 
 
@@ -15,6 +15,11 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 
 app.use(express.json())
+
+let port = process.env.PORT
+if (port == null || port == "") {
+    port = 3000;
+}
 
 try {
     mongoose.connect(url);
@@ -28,8 +33,8 @@ try {
     app.use("/", require("./routers/adminRouter"))
     // app.use("/", require("./routers/workouts"))
 
-    app.listen(PORT, () => {
-        console.log(`App was launched on http://localhost:${PORT}`)
+    app.listen(port, () => {
+        console.log(`App was launched on http://localhost:${port}`)
     })
 } catch (e) {
     console.log("Something went wrong!" +
