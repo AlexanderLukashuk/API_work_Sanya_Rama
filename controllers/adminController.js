@@ -80,11 +80,12 @@ class authCtrl{
 
             if (!found){
                 return res.status(400).json({message: username + "was not found!"})
+                return res.status(400).json({message: username + " was not found!"})
             }
             let deletedUser = await User.findOneAndDelete( {username})
             if (!deletedUser){
                 return res.status(400).json({message: "This user cannot be deleted by some reason!"})
-            } else res.send(username + " was deleted!")
+            } else res.json({message: username +" was deleted!"})
         } catch (e) {
             console.log(e);
         }

@@ -5,13 +5,8 @@ const ejs = require('ejs')
 const authRouter = require("./routers/authRouter")
 const mongoose = require('mongoose');
 
-// const PORT = 3000
+const PORT = 3000
 const url = "mongodb+srv://maulerr:Aitu2021!@backend.koyk6.mongodb.net/backend?retryWrites=true&w=majority";
-
-let port = process.env.PORT
-if (port == null || port == "") {
-    port = 3000;
-}
 
 
 app.set("view engine", "ejs")
@@ -33,8 +28,8 @@ try {
     app.use("/", require("./routers/adminRouter"))
     // app.use("/", require("./routers/workouts"))
 
-    app.listen(port, () => {
-        console.log(`App was launched on http://localhost:${port}`)
+    app.listen(PORT, () => {
+        console.log(`App was launched on http://localhost:${PORT}`)
     })
 } catch (e) {
     console.log("Something went wrong!" +
