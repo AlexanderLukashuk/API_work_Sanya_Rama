@@ -34,7 +34,7 @@ try {
     // app.use("/", require("./routers/workouts"))
 
     app.listen(port, () => {
-        console.log(`App was launched on http://localhost:${port}`)
+        console.log(`App was launched on ${port} PORT`)
     })
 } catch (e) {
     console.log("Something went wrong!" +

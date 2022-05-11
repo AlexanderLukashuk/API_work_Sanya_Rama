@@ -46,9 +46,6 @@ class authCtrl{
     async getUsers(req, res) {
         try {
             const users = await User.find();
-            for (const usersKey in users) {
-                usersKey.username + " " + usersKey.email;
-            }
             res.send(users);
         }  catch (e) {
             console.log(e)
